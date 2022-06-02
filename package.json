@@ -1,0 +1,29 @@
+{
+  "name": "goit-js-module_9.2_promise_repeta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/*.html",
+    "build": "parcel build src/*.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreyHerzhov/goit-js-module_9.2_promise_repeta.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreyHerzhov/goit-js-module_9.2_promise_repeta/issues"
+  },
+  "homepage": "https://github.com/AndreyHerzhov/goit-js-module_9.2_promise_repeta#readme",
+  "dependencies": {
+    "bootstrap.native": "^4.2.0",
+    "lodash.throttle": "^4.1.1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-nuke-dist": "^1.0.1"
+  }
+}
