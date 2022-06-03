@@ -12,9 +12,9 @@
 //     return promise = new Promise((resolve, reject) => {
 //             setTimeout(() => {
 //         if(passed){
-//             resolve('Ales Gut. Der Kuchen ist fetrig')
+//             resolve('✅Ales Gut. Der Kuchen ist fetrig')
 //         }else{
-//             reject('Ales ist vorbei')
+//             reject('❌Ales ist vorbei')
 //         }
 //     }, DELAY)
 //     })
@@ -51,6 +51,79 @@
  * Покемоны с https://pokeapi.co/
  */
 
+// const fetchPokemonById = id => {
+//  return   fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(r => r.json())
+ 
+// }
 
+// function onFetchSuccess (pokemon) {
+//     console.log(pokemon)
+// }
+
+// function onFetchError (error) {
+//     console.log('This is in error')
+//     console.log(error)
+// }
+
+// fetchPokemonById(1).then(onFetchSuccess).catch(onFetchError)
+// fetchPokemonById(1,onFetchSuccess,onFetchError)
+// fetchPokemonById(2)
+// fetchPokemonById(3)
+
+
+const makePromise = () => {
+   return new Promise((resolve,reject) => {
+        const passed = Math.random() > 0.5
+       setTimeout(() => {
+        if(passed) {
+            resolve('✅resolve')
+        }
+        reject('❌Ops')
+        
+       }, 200);
+    })
+}
+
+makePromise()
+.then(result => console.log(result))
+.catch(error => console.log(error))
 
  
+// const makePromise = () => {
+//   return new Promise((resolve, reject) => {
+//     const passed = Math.random() > 0.5;
+
+//     setTimeout(() => {
+//       if (passed) {
+//         resolve('✅ Куку это resolve');
+//       }
+
+//       reject('❌ все пропало это reject');
+//     }, 200);
+//   });
+// };
+
+// makePromise()
+//   .then(result => console.log(result))
+//   .catch(error => console.log(error));
+
+
+
+
+
+
+
+//  const promise = new Promise((resolve) => {
+//      resolve(10)
+//  })
+
+//  promise.then(value => {
+//      new Promise(resolve => {
+//          resolve(value * 2)
+//      })
+//  }).then(value =>console.log(value)) // undefined
+
+// const array = [1,2,3,4]
+// array.forEach(function (i) {
+//     console.log(i)
+// })
