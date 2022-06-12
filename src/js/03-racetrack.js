@@ -8,6 +8,7 @@ const horses = [
   'Seabiscuit',
 ];
 
+let raceCount = 0;
 const refs = {
     startBtn: document.querySelector('.js-start-race'),
     winnerField: document.querySelector('.js-winner'),
@@ -19,7 +20,7 @@ refs.startBtn.addEventListener('click',onStart);
 
 function onStart() {
     const promises = horses.map(run)
-
+    raceCount += 1
     updateWinnerField('')
     updateProgressFiel('🤖 Заезд начался, ставки не принимаются!') 
     determineWinner(promises);
@@ -27,15 +28,14 @@ function onStart() {
     
 }
 
+
 function determineWinner(horsesP) {
     Promise.race(horsesP).then(({horse, time}) =>{  
         updateWinnerField(`🎉 Победил ${horse}, финишировав за ${time}
         времени`),
-        updateResultsTable( {horse, time})
-        }
-        );
-       
-}
+        updateResultsTable( {horse, time, raceCount})
+        });
+    }
 
 function waitForAll(horsesP) {
     Promise.all(horsesP).then(() => {
@@ -51,17 +51,10 @@ function updateProgressFiel(message) {
     refs.progressField.textContent = message
 }
 
-function updateResultsTable ({horse, time}) {
-    const tr = `<tr><td>0</td><td>${horse}</td><td>${time}</td></tr>`
+function updateResultsTable ({horse, time, raceCount}) {
+    const tr = `<tr><td>${raceCount}</td><td>${horse}</td><td>${time}</td></tr>`
     refs.tableBody.insertAdjacentHTML("beforeend", tr)
 }
-
- 
-// run('Mango') 
-//     .then(x => console.log(x))
-//     .catch(e => console.log(e))
-
-
 
 function getRandomeTime (min,max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
@@ -77,12 +70,7 @@ function getRandomeTime (min,max) {
  */
 
 
-function run (horse) {
-    return new Promise((resolve,reject) => {
-    const time = getRandomeTime(2000,3500)
-    
-    setTimeout(() => {
-        resolve({horse, time})
-    }, time);
-    })
-}
+// run('Mango') 
+//     .then(x => console.log(x))
+//     .catch(e => console.log(e))
+
